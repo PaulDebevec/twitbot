@@ -1,0 +1,38 @@
+<!-- app/templates/botpost/index.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>BotPosts</h2>
+
+  <div>
+    <button onclick="filterByPosted(true)">Show Posted</button>
+    <button onclick="filterByPosted(false)">Show Unposted</button>
+  </div>
+
+  <ul id="botpost-list">
+    {% for botpost in botposts %}
+      <li>
+        <a href="{{ url_for('show_botpost', botpost_id=botpost.id) }}">
+          BotPost #{{ botpost.id }}
+        </a>
+        <p>Date Posted: {{ botpost.date_posted }}</p>
+        <p>Created At: {{ botpost.created_at }}</p>
+        <p>Updated At: {{ botpost.updated_at }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <script>
+    function filterByPosted(posted) {
+      var botpostList = document.getElementById('botpost-list');
+      var items = botpostList.getElementsByTagName('li');
+
+      for (var i = 0; i < items.length; i++) {
+        var postedStatus = items[i].textContent.includes("Show Posted");
+        items[i].style.display = (posted === postedStatus) ? 'list-item' : 'none';
+      }
+    }
+  </script>
+
+{% endblock %}

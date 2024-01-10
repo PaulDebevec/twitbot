@@ -1,0 +1,15 @@
+<!-- app/templates/botpost/show.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>BotPost Details</h2>
+  <p>ID: {{ botpost.id }}</p>
+  <p>Date Posted: {{ botpost.date_posted }}</p>
+  <p>Part One: {{ botpost.body.part_one }}</p>
+  <p>Part Two: {{ botpost.body.part_two }}</p>
+  <p>Posted: {{ 'Yes' if botpost.posted else 'No' }}</p>
+  <p>Created At: {{ botpost.created_at }}</p>
+  <p>Updated At: {{ botpost.updated_at }}</p>
+  <!-- Add more details as needed -->
+{% endblock %}

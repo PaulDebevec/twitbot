@@ -1,0 +1,21 @@
+<!-- app/templates/botpost/create.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Create BotPost</h2>
+  <form method="POST" action="{{ url_for('create_botpost') }}">
+    {{ form.csrf_token }}
+    <div>
+      {{ form.part_one.label }}
+      {{ form.part_one }}
+    </div>
+    <div>
+      {{ form.part_two.label }}
+      {{ form.part_two }}
+    </div>
+    <div>
+      {{ form.submit }}
+    </div>
+  </form>
+{% endblock %}

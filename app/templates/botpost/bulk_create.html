@@ -1,0 +1,17 @@
+<!-- app/templates/botpost/bulk_create.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Bulk Create BotPosts</h2>
+  <form method="POST" action="{{ url_for('botpost.bulk_create_botposts') }}">
+    {{ form.csrf_token }}
+    <div>
+      {{ form.botposts_json.label }}
+      {{ form.botposts_json(rows=10, cols=40) }}
+    </div>
+    <div>
+      {{ form.submit }}
+    </div>
+  </form>
+{% endblock %}
